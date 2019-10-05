@@ -1,0 +1,135 @@
+$menuColor: #1a9e00;
+$animation: all 0.2s cubic-bezier(1,.25,0,.75) 0s;
+
+@keyframes toggling_in{
+    0%{height: 0px;}
+    100%{height: 100px;}
+}
+
+@keyframes toggling_out{
+    0%{height: 100px;}
+    100%{height: 0px;}
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #e6e6e6;
+    font-size: 17px;
+    font-family: 'Muli', sans-serif;
+    color: black;
+}
+
+*{ box-sizing: border-box; }
+
+.top-menu{
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    right: 0;
+    top: 15px;
+    ul{
+        margin-top: -17px;
+        margin-left: -40px;
+        li{ 
+            display: block;
+            float: left;
+            box-sizing: border-box;
+            width: (100% / 4);
+            height: 100%;
+            line-height: 50px;
+            text-align: center;
+            background-color: $menuColor;
+            color: #e6e6e6;
+            font-weight: bold;
+            text-decoration: none;
+            position: relative;
+            a{
+                text-decoration: none;
+                position: relative;        
+                &:before{
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 2px;
+                    bottom: 0;
+                    left: 0;
+                    background-color: #115e02;
+                    visibility: hidden;
+                    transform: scaleX(0);
+                    transition: $animation;
+                }
+                &:hover:before{
+                    visibility: visible;
+                    transform: scaleX(1.5);
+               }
+            }
+        }
+    }
+}
+
+a:link, a:visited {text-decoration: none; color: white;}
+
+p{
+    margin-top: 50px;
+    padding: 30px;
+}
+
+.toggle-menu-start{ display: none; }
+
+.toggle-menu-close{
+    position: fixed;
+    display: block;
+    left: (100% / 4);
+    top: 45px;
+    width: (100% / 4);
+    height: 0;
+    background-color: $menuColor;
+    animation-name: toggling_out;
+    animation-duration: 0.2s;
+    font-size: 0px;
+    clear: both;
+}
+
+.toggle-menu-open{
+    position: fixed;
+    display: block;
+    clear: both;
+    left: (100% / 4);
+    top: 30px;
+    width: (100% / 4);
+    height: 100px;
+    background-color: $menuColor;
+    text-align: center;
+    padding-top: 5px;
+    padding-left: 0;
+    padding-bottom: 5px;
+    animation-name: toggling_in;
+    animation-duration: 0.2s;
+    clear: both;
+    li{
+        display: block;
+        height: 50%;
+        line-height: 50px;
+    }
+    a{
+        text-decoration: none;
+        position: relative;        
+        &:before{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #115e02;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: $animation;
+        }
+        &:hover:before{
+            visibility: visible;
+            transform: scaleX(1);
+       }
+    }
+}
